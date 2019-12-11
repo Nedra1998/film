@@ -8,10 +8,10 @@
     <title>Pandas D3 Force Directed Example - www.austintaylor.io</title>
 
     <!-- JavaScript Libraries //-->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
 
     <!-- CSS Style //-->
-    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900|Source+Code+Pro:300" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,900|Source+Code+Pro:300" rel="stylesheet" type="text/css">
     <style>
         body {
             font-family: 'Source Sans Pro', sans-serif;
@@ -120,7 +120,6 @@
             var plot = svg.append("g")
                 .attr("id", "plot")
                 .attr("transform", "translate(" + pad + ", " + pad + ")");
-            // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-force
             var layout = d3.layout.force()
                 .size([width - margin, height - margin])
                 .charge(-120)
@@ -133,9 +132,7 @@
             drawLinks(graph.links);
             drawNodes(graph.nodes);
             // add ability to drag and update layout
-            // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-drag
             d3.selectAll(".node").call(layout.drag);
-            // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-on
             layout.on("tick", function() {
                 d3.selectAll(".link")
                     .attr("x1", function(d) {
@@ -178,7 +175,6 @@
         function drawNodes(nodes) {
             // used to assign nodes color by group
             var color = d3.scale.category20();
-            // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-nodes
             d3.select("#plot").selectAll(".node")
                 .data(nodes)
                 .enter()
@@ -213,7 +209,6 @@
                     return d.value;
                 }))
                 .range([1, 40]);
-            // https://github.com/mbostock/d3/wiki/Force-Layout#wiki-links
             d3.select("#plot").selectAll(".link")
                 .data(links)
                 .enter()
